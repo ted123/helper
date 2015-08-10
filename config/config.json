@@ -1,0 +1,10 @@
+{
+  "test": {
+    "username": "postgres",
+    "password": "password",
+    "database": "HelperTest",
+    "host": "postgres",
+    "port": "5432",
+    "dialect": "postgres"
+  }
+}
