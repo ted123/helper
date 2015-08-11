@@ -21,7 +21,7 @@ var dbHelper = require( 'helper' )( options );
 
 ###Available functions:
 
-####```drop``` 
+####drop 
 - Empty table contents.
 
 #####Parameters:
@@ -49,7 +49,7 @@ or
 ```
 
 
-####```add``` 
+####add 
 - Save all data to table.
 
 #####Parameters:
@@ -75,7 +75,7 @@ var newOptions = {
 var dbHelper = require( 'helper' )( options );
 dbHelper.add(newOptions);
 ```
-####```truncate``` 
+####truncate 
 - Truncate specified table.
 
 #####Parameters:
