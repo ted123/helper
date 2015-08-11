@@ -133,3 +133,74 @@ dbHelper.configure( {
 	'data'          : newData
 } );
 	```
+	
+####reset 
+Empty database table and repopulate it with data.
+
+- Parameters:
+
+	<b>```done```</b> - Callback function.
+
+- Sample Code:
+
+	```javascript
+function done () {
+	// do something
+}
+var dbHelper = require( 'helper' )();
+dbHelper.reset( done );
+	```
+	
+###Other Features
+
+- Disable reset function when running test by setting environement variable HARD_RESET to false
+
+	```javascript
+HARD_RESET=false npm test
+	```
+	
+###Example Usage
+
+```javascript
+'use strict';
+
+var lapinMock = require( 'lapin-mock' );
+var data      = require( './data/index' );
+
+before( function ( done ) {
+	require( '../db' )( done );
+} );
+
+function reset ( done ) {
+	var options = {
+		'sequelize' : require( 'sequelize' ).CONNECTION,
+		'data'      : data
+	};
+
+	var dbHelper = require( 'helper' )( options ); // initialize helper
+
+	dbHelper.reset( done );
+}
+
+function Mock () {}
+
+Mock.prototype.respond = function ( messageType, callback ) {
+	this.call = callback;
+};
+
+module.exports = {
+	'Mock'      : Mock,
+	'data'      : data,
+	'reset'     : reset,
+	'SendMock'  : lapinMock.SendMock,
+	'rabbitAPI' : lapinMock.rabbitAPI
+};
+```
+
+###Running Unit Test
+
+- Create database `HelperTestDatabase`
+
+- Use migration script found in scripts folder. ( Ex. ```./scripts/migrate.sh``` )
+
+- Use ```npm test``` to run linting and unit test
