@@ -22,75 +22,114 @@ var dbHelper = require( 'helper' )( options );
 ###Available functions:
 
 ####drop 
-- Empty table contents.
+Empty table contents.
 
-#####Parameters:
+- Parameters:
 
-<b>```options```</b> - Can be a callback function or an object containing callback function and data to be used.
+	<b>```options```</b> - Can be a callback function or an object containing callback function and data to be used.
 
-#####Sample Code:
+- Sample Code:
 
-```javascript
-	function callback () {
-		//do something
-	}
-	var dbHelper = require( 'helper' )( options );
-	dbHelper.drop(callback)
-```
+	```javascript
+function callback () {
+	//do something
+}
+var dbHelper = require( 'helper' )( options );
+dbHelper.drop(callback)
+	```
 or
 	
-```javascript
-	var newOptions = {
-		'data' : someData
-		'done' : soneCallback
-	}
-	var dbHelper = require( 'helper' )( options );
-	dbHelper.drop(newOptions);
-```
+	```javascript
+var newOptions = {
+	'data' : someData
+	'done' : soneCallback
+}
+var dbHelper = require( 'helper' )( options );
+dbHelper.drop(newOptions);
+	```
 
 
 ####add 
-- Save all data to table.
+Save all data to table.
 
-#####Parameters:
+- Parameters:
 
-<b>```options```</b> - Can be a callback function or an object containing callback function and data to be used.
+	<b>```options```</b> - Can be a callback function or an object containing callback function and data to be used.
 
-#####Sample Code:
+- Sample Code:
 
-```javascript
+	```javascript
 function callback () {
 	//do something
 }
 var dbHelper = require( 'helper' )( options );
 dbHelper.add(callback)
-```
-or
+	```
+	or
 	
-```javascript
+	```javascript
 var newOptions = {
 	'data' : someData
 	'done' : soneCallback
 }
 var dbHelper = require( 'helper' )( options );
 dbHelper.add(newOptions);
-```
+	```
+	
 ####truncate 
-- Truncate specified table.
+Truncate specified table.
 
-#####Parameters:
+- Parameters:
 
-<b>```table```</b> - Table name.
+	<b>```table```</b> - Table name.
 
-<b>```callback```</b> - Callback function.
+	<b>```callback```</b> - Callback function.
 
-#####Sample Code:
+- Sample Code:
 
-```javascript
+	```javascript
 function callback () {
 	//do something
 }
 var dbHelper = require( 'helper' )( options );
 dbHelper.truncate( 'TestTable', callback )
-```
+	```
 
+####bulkCreate 
+Save data in bulk.
+
+- Parameters:
+
+	<b>```Model```</b> - Sequelize model.
+
+	<b>```newData```</b> - Data to be saved.
+	
+	<b>```done```</b> - Callback function.
+
+- Sample Code:
+
+	```javascript
+function callback () {
+	//do something
+}
+var dbHelper = require( 'helper' )( options );
+dbHelper.bulkCreate( sequelizeModel, newData ,callback )
+	```
+	
+####configure 
+Override exisiting options.
+
+- Parameters:
+
+	<b>```options```</b> - Object containing new options.
+
+- Sample Code:
+
+	```javascript
+var dbHelper = require( 'helper' )();
+dbHelper.configure( {
+	'singularModel' : false,
+	'sequelize'     : newSequelizeConnection,
+	'data'          : newData
+} );
+	```
