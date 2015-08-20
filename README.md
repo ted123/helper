@@ -1,15 +1,15 @@
-#Helper
+#database-reset
 Database helper function
 ##Usage
-###Initializing helper function:
+###Initializing database-reset function:
 
 ```javascript
-var dbHelper = require( 'helper' )();
+var dbHelper = require( 'database-reset' )();
 ```
 or
 
 ```javascript
-var dbHelper = require( 'helper' )( options );
+var dbHelper = require( 'database-reset' )( options );
 ```
 ###Available options:
 
@@ -34,7 +34,7 @@ Empty table contents.
 function callback () {
 	//do something
 }
-var dbHelper = require( 'helper' )( options );
+var dbHelper = require( 'database-reset' )( options );
 dbHelper.drop(callback)
 	```
 or
@@ -44,7 +44,7 @@ var newOptions = {
 	'data' : someData
 	'done' : soneCallback
 }
-var dbHelper = require( 'helper' )( options );
+var dbHelper = require( 'database-reset' )( options );
 dbHelper.drop(newOptions);
 	```
 
@@ -62,7 +62,7 @@ Save all data to table.
 function callback () {
 	//do something
 }
-var dbHelper = require( 'helper' )( options );
+var dbHelper = require( 'database-reset' )( options );
 dbHelper.add(callback)
 	```
 	or
@@ -72,7 +72,7 @@ var newOptions = {
 	'data' : someData
 	'done' : soneCallback
 }
-var dbHelper = require( 'helper' )( options );
+var dbHelper = require( 'database-reset' )( options );
 dbHelper.add(newOptions);
 	```
 
@@ -91,7 +91,7 @@ Truncate specified table.
 function callback () {
 	//do something
 }
-var dbHelper = require( 'helper' )( options );
+var dbHelper = require( 'database-reset' )( options );
 dbHelper.truncate( 'TestTable', callback )
 	```
 
@@ -112,7 +112,7 @@ Save data in bulk.
 function callback () {
 	//do something
 }
-var dbHelper = require( 'helper' )( options );
+var dbHelper = require( 'database-reset' )( options );
 dbHelper.bulkCreate( sequelizeModel, newData ,callback )
 	```
 
@@ -126,7 +126,7 @@ Override exisiting options.
 - Sample Code:
 
 	```javascript
-var dbHelper = require( 'helper' )();
+var dbHelper = require( 'database-reset' )();
 dbHelper.configure( {
 	'singularModel' : false,
 	'sequelize'     : newSequelizeConnection,
@@ -147,7 +147,7 @@ Empty database table and repopulate it with data.
 function done () {
 	// do something
 }
-var dbHelper = require( 'helper' )();
+var dbHelper = require( 'database-reset' )();
 dbHelper.reset( done );
 	```
 
@@ -170,7 +170,7 @@ function reset ( done ) {
 		'data'      : data
 	};
 
-	var dbHelper = require( 'helper' )( options ); // initialize helper
+	var dbHelper = require( 'database-reset' )( options ); // initialize database-reset
 
 	dbHelper.reset( done );
 }
